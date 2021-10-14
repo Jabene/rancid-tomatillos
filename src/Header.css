@@ -4,7 +4,6 @@ header {
   background-color: purple;
   display: flex;
   justify-content: center;
-  border: 15px solid orange;
 }
 
 h1 {

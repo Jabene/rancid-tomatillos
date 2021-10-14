@@ -9,22 +9,29 @@ class App extends React.Component{
     super();
     this.state = {
       movies: [],
-      popupVisable: true
+      popupVisable: false
     }
+    this.togglePopup = this.togglePopup.bind(this)
   }
 
   componentDidMount() {
     fetchData("movies")
     .then(data => {
       this.setState({movies: data.movies})
+      console.log(data.movies)
     })
   }
+
+  togglePopup() {
+    this.setState({popupVisable: !this.state.popupVisable})
+  }
+
 
   render() {
     return(
       <div className="App">
       <Header />
-      <Main movies={this.state.movies} popupVisable={this.state.popupVisable}/>
+      <Main movies={this.state.movies} popupVisable={this.state.popupVisable} togglePopup={this.togglePopup}/>
       </div>
     )
   }
