@@ -1,14 +1,14 @@
 import React from 'react';
-import movieData from '../data/movies'
+import movieData from './data/movies'
 import './App.css';
 import Header from './Header';
-// import Main from './Main';
+import Main from './Main';
 
 class App extends React.Component{
   constructor() {
     super();
     this.state = {
-      movies: []
+      movies: movieData.movies
     }
   }
 
@@ -16,10 +16,10 @@ class App extends React.Component{
     return(
       <div className="App">
       <Header />
+      <Main movies={this.state.movies}/>
       </div>
     )
   }
-  //<Main movies={this.state.movies}/>
 }
 
 export default App;
