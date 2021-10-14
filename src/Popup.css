@@ -1,0 +1,9 @@
+.popup {
+  width: 60%;
+  height: 60%;
+  position: fixed;
+  z-index: 9;
+  border: black solid 10px;
+  align-self: center;
+  background-color: white;
+}
