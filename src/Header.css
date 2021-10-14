@@ -1,0 +1,12 @@
+header {
+  height: 8%;
+  width: 100%;
+  background-color: purple;
+  display: flex;
+  justify-content: center;
+  border: 15px solid orange;
+}
+
+h1 {
+  margin: 1% 0% 0% 0%;
+}

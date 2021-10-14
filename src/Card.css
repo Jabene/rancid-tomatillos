@@ -1,0 +1,18 @@
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 20%;
+  height: 20%;
+  /* border: 2px solid green; */
+  margin: 2% 1% 1% 1%;
+}
+
+.movie-img {
+  height: 90%;
+  width: 100%;
+}
+
+h2 {
+  margin: 0% 0% 2% 0%;
+}
