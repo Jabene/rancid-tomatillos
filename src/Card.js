@@ -16,7 +16,7 @@ class Card extends React.Component {
   render () {
     return (
     <div className='movie-card' onMouseEnter={() => {this.changeHoverState()}} onMouseLeave={() => {this.changeHoverState()}}
-    onClick={() => {this.props.togglePopup()}}>
+    onClick={() => {this.props.togglePopup(this.props.movie.id)}}>
       {this.state.hover &&
         <div className="hover-info">
           <p>Average Rating: {Math.floor(this.props.movie.average_rating)}</p>

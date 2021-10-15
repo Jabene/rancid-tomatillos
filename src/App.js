@@ -9,7 +9,8 @@ class App extends React.Component{
     super();
     this.state = {
       movies: [],
-      popupVisable: false
+      popupVisable: false,
+      currentMovie: {}
     }
     this.togglePopup = this.togglePopup.bind(this)
   }
@@ -22,8 +23,17 @@ class App extends React.Component{
     })
   }
 
-  togglePopup() {
+  togglePopup(id) {
     this.setState({popupVisable: !this.state.popupVisable})
+    this.gatherMovieData(id)
+  }
+
+  gatherMovieData(id) {
+    fetchData(`movies/${id}`)
+    .then(data => {
+      this.setState({currentMovie: data.movie})
+      console.log(data.movie)
+    })
   }
 
 
@@ -31,7 +41,7 @@ class App extends React.Component{
     return(
       <div className="App">
       <Header />
-      <Main movies={this.state.movies} popupVisable={this.state.popupVisable} togglePopup={this.togglePopup}/>
+      <Main movies={this.state.movies} popupVisable={this.state.popupVisable} togglePopup={this.togglePopup} movieInfo={this.state.currentMovie}/>
       </div>
     )
   }

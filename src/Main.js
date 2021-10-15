@@ -3,7 +3,7 @@ import Card from './Card';
 import './Main.css'
 import Popup from './Popup';
 
-function Main({movies, popupVisable, togglePopup}) {
+function Main({movies, popupVisable, togglePopup, movieInfo}) {
   const movieCards = movies.map(movie => {
     return(
       <Card key={movie.id} movie={movie} togglePopup={togglePopup}/>
@@ -11,7 +11,7 @@ function Main({movies, popupVisable, togglePopup}) {
   })
   return (
     <main className='movies-container'>
-      {popupVisable && <Popup closePopup={togglePopup}/>}
+      {popupVisable && <Popup closePopup={togglePopup} currentMovie={movieInfo}/>}
       {movieCards}
     </main>
   )
