@@ -1,4 +1,4 @@
-main {
+.movies-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -6,4 +6,15 @@ main {
   width: 100%;
   align-items: center;
   justify-content: space-around;
+}
+
+.movies-container-noscroll {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 92%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden
 }

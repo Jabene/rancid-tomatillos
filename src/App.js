@@ -41,7 +41,12 @@ class App extends React.Component{
     return(
       <div className="App">
       <Header />
-      <Main movies={this.state.movies} popupVisable={this.state.popupVisable} togglePopup={this.togglePopup} movieInfo={this.state.currentMovie}/>
+      <Main
+        movies={this.state.movies}
+        popupVisable={this.state.popupVisable}
+        togglePopup={this.togglePopup}
+        movieInfo={this.state.currentMovie}
+      />
       </div>
     )
   }
