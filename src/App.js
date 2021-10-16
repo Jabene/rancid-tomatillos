@@ -8,6 +8,7 @@ class App extends React.Component{
   constructor() {
     super();
     this.state = {
+      responseOk: true,
       movies: [],
       popupVisable: false,
       currentMovie: {}
@@ -18,35 +19,31 @@ class App extends React.Component{
   componentDidMount() {
     fetchData("movies")
     .then(data => {
-      this.setState({movies: data.movies})
-      console.log(data.movies)
+      if(data) {
+        this.setState({movies: data.movies})
+      } else {
+        this.setState({responseOk: false})
+      }
     })
   }
 
   togglePopup(id) {
-    this.setState({popupVisable: !this.state.popupVisable})
-    this.gatherMovieData(id)
-  }
-
-  gatherMovieData(id) {
     fetchData(`movies/${id}`)
     .then(data => {
-      this.setState({currentMovie: data.movie})
-      console.log(data.movie)
+      this.setState({currentMovie: data.movie, popupVisable: !this.state.popupVisable})
     })
   }
-
 
   render() {
     return(
       <div className="App">
-      <Header />
-      <Main
-        movies={this.state.movies}
-        popupVisable={this.state.popupVisable}
-        togglePopup={this.togglePopup}
-        movieInfo={this.state.currentMovie}
-      />
+        {this.state.responseOk ? <><Header />
+        <Main
+          movies={this.state.movies}
+          popupVisable={this.state.popupVisable}
+          togglePopup={this.togglePopup}
+          movieInfo={this.state.currentMovie}
+        /></> : <p>Try again, buster! No, seriously...we are sorry, having issues over here!</p>}
       </div>
     )
   }
