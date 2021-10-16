@@ -19,9 +19,15 @@ h2 {
 .hover-info {
   height: 100%;
   width: 100%;
-  z-index: 9;
+  z-index: 6;
   background-color: white;
   position: absolute;
   opacity: .9;
-  border: 2px solid red;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1.75em;
+  color: #202020;
 }
