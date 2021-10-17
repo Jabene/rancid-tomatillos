@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Header from './Header';
-import Main from './Main'
+import Header from './header/Header.js';
+import Main from './main/Main.js';
 import { fetchData } from './data/apiData'
 
 class App extends React.Component{
@@ -31,6 +31,7 @@ class App extends React.Component{
     fetchData(`movies/${id}`)
     .then(data => {
       this.setState({currentMovie: data.movie, popupVisable: !this.state.popupVisable})
+      // console.log(this.state.currentMovie)
     })
   }
 
