@@ -37,7 +37,7 @@ class Card extends React.Component {
           <p>{this.state.rating}</p>
         </div>
       }
-      <img className='movie-img' src={this.props.movie.poster_path}/>
+      <img className='movie-img' src={this.props.movie.poster_path} alt={`${this.props.movie.title} movie cover`}/>
       <h2>{this.props.movie.title}</h2>
     </div>
     )

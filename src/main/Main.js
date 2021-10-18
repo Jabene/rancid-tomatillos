@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from './Card';
-import './Main.css'
-import Popup from './Popup';
+import Card from '../card/Card.js';
+import '../main/Main.css'
+import Popup from '../popup/Popup.js';
 
 function Main({movies, popupVisable, togglePopup, movieInfo}) {
   const movieCards = movies.map(movie => {
