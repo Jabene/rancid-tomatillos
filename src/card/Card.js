@@ -1,5 +1,6 @@
 import React from 'react';
-import './Card.css'
+import { Link } from 'react-router-dom';
+import './Card.css';
 
 class Card extends React.Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class Card extends React.Component {
 
   render () {
     return (
-    <div
+    <Link
+      to={`/${this.props.movie.title}`}
       className='movie-card'
       onMouseEnter={() => {this.changeHoverState()}}
       onMouseLeave={() => {this.changeHoverState()}}
@@ -39,7 +41,7 @@ class Card extends React.Component {
       }
       <img className='movie-img' src={this.props.movie.poster_path} alt={`${this.props.movie.title} movie cover`}/>
       <h2>{this.props.movie.title}</h2>
-    </div>
+    </Link>
     )
   }
 }

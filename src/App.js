@@ -11,7 +11,7 @@ class App extends React.Component{
       responseOk: true,
       movies: [],
       popupVisable: false,
-      currentMovie: {}
+      allMovies: []
     }
     this.togglePopup = this.togglePopup.bind(this)
   }
@@ -25,26 +25,37 @@ class App extends React.Component{
         this.setState({responseOk: false})
       }
     })
+    .then(() => {
+      this.state.movies.forEach(movie => {
+        this.fetchMovie(movie.id)
+      })
+    })
   }
 
-  togglePopup(id) {
-    fetchData(`movies/${id}`)
-    .then(data => {
-      this.setState({currentMovie: data.movie, popupVisable: !this.state.popupVisable})
-      // console.log(this.state.currentMovie)
+  fetchMovie(id) {
+    return fetchData(`movies/${id}`).then(data => {
+      let allMovies = this.state.allMovies
+      allMovies.push(data.movie)
+      this.setState({allMovies: allMovies})
     })
+  }
+
+  togglePopup() {
+    this.setState({popupVisable: !this.state.popupVisable})
   }
 
   render() {
     return(
       <div className="App">
-        {this.state.responseOk ? <><Header />
-        <Main
-          movies={this.state.movies}
-          popupVisable={this.state.popupVisable}
-          togglePopup={this.togglePopup}
-          movieInfo={this.state.currentMovie}
-        /></> : <p>Try again, buster! No, seriously...we are sorry, having issues over here!</p>}
+        {this.state.responseOk ? <>
+          <Header />
+          <Main
+            movies={this.state.movies}
+            popupVisable={this.state.popupVisable}
+            togglePopup={this.togglePopup}
+            allMovies={this.state.allMovies}
+          />
+        </> : <p>Try again, buster! No, seriously...we are sorry, having issues over here!</p>}
       </div>
     )
   }

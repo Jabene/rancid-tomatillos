@@ -1,9 +1,10 @@
 import React from 'react';
 import Card from '../card/Card.js';
+import { Route } from 'react-router-dom'
 import '../main/Main.css'
 import Popup from '../popup/Popup.js';
 
-function Main({movies, popupVisable, togglePopup, movieInfo}) {
+function Main({movies, popupVisable, togglePopup, allMovies}) {
   const movieCards = movies.map(movie => {
     return(
       <Card
@@ -13,13 +14,17 @@ function Main({movies, popupVisable, togglePopup, movieInfo}) {
       />
     )
   })
-
   return (
     <main
       className={popupVisable ? "movies-container-noscroll" : "movies-container"}>
-      {popupVisable && <Popup
-        closePopup={togglePopup}
-        currentMovie={movieInfo}/>}
+      <Route exact path="/:title" render={({match}) => {
+        let matchingMovie = allMovies.find(movie => match.params.title === movie.title)
+        return (movies.find(movie => match.params.title === movie.title) &&
+        <Popup
+          closePopup={togglePopup}
+          currentMovie={matchingMovie}
+        />)
+      }}/>
       {movieCards}
     </main>
   )
