@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Card.css';
 
 class Card extends React.Component {
@@ -26,12 +26,12 @@ class Card extends React.Component {
 
   render () {
     return (
-    <Link
+    <NavLink style={{textDecoration: 'none', color: 'black'}}
       to={`/${this.props.movie.title}`}
       className='movie-card'
       onMouseEnter={() => {this.changeHoverState()}}
       onMouseLeave={() => {this.changeHoverState()}}
-      onClick={() => {this.props.togglePopup(this.props.movie.id)}}
+      // onClick={() => {this.props.togglePopup(this.props.movie.id)}}
     >
       {this.state.hover &&
         <div className="hover-info">
@@ -41,7 +41,7 @@ class Card extends React.Component {
       }
       <img className='movie-img' src={this.props.movie.poster_path} alt={`${this.props.movie.title} movie cover`}/>
       <h2>{this.props.movie.title}</h2>
-    </Link>
+    </NavLink>
     )
   }
 }

@@ -11,11 +11,9 @@ class App extends React.Component{
     this.state = {
       responseOk: true,
       movies: [],
-      popupVisable: false,
       allMovies: [],
       loading: true
     }
-    this.togglePopup = this.togglePopup.bind(this)
   }
 
   componentDidMount() {
@@ -43,10 +41,6 @@ class App extends React.Component{
     })
   }
 
-  togglePopup() {
-    this.setState({popupVisable: !this.state.popupVisable})
-  }
-
   render() {
     return(
       <div className="App">
@@ -57,7 +51,6 @@ class App extends React.Component{
               <Main
                 movies={this.state.movies}
                 popupVisable={this.state.popupVisable}
-                togglePopup={this.togglePopup}
                 allMovies={this.state.allMovies}
               />
             </>

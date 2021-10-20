@@ -3,7 +3,7 @@ import Button from '../button/Button.js';
 import { Link } from 'react-router-dom'
 import './Popup.css'
 
-function Popup({closePopup, currentMovie}) {
+function Popup({currentMovie}) {
   // console.log('Hello',currentMovie.title)
   let popupBackground = {backgroundImage: `url(${currentMovie.backdrop_path})`}
   console.log(currentMovie, 'popup')
@@ -17,7 +17,7 @@ function Popup({closePopup, currentMovie}) {
           </div>
           <article className='popup-article'>
             <Link to="/" className='popup-close'>
-              <Button onClick={() => { closePopup(currentMovie.id)} } text="" className="popup-btn"/>
+              <Button text="" className="popup-btn"/>
             </Link>
             <h1>{ currentMovie.title }</h1>
             <p> {`${currentMovie.release_date.substring(0,4)}, ${Math.floor(currentMovie.runtime/60)}h ${currentMovie.runtime % 60}m`} </p>
