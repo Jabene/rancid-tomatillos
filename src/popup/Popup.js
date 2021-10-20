@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom'
 import './Popup.css'
 
 function Popup({currentMovie}) {
-  // console.log('Hello',currentMovie.title)
   let popupBackground = {backgroundImage: `url(${currentMovie.backdrop_path})`}
-  console.log(currentMovie, 'popup')
   return (
     <div className='popup'>
       <div className='popup-opacity'></div>

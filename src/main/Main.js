@@ -4,7 +4,8 @@ import { Route } from 'react-router-dom'
 import '../main/Main.css'
 import Popup from '../popup/Popup.js';
 
-function Main({movies, popupVisable, allMovies}) {
+function Main({movies, allMovies}) {
+  console.log(movies, 'movies in main')
   const movieCards = movies.map(movie => {
     return(
       <Card
@@ -20,7 +21,7 @@ function Main({movies, popupVisable, allMovies}) {
         let matchingMovie = allMovies.find(movie => Number(match.params.id) === movie.id) || {
           id: 0,
           poster_path: '',
-          genres: [],
+          genres: [""],
           rating: '',
           runtime: 0,
           revenue: 0,

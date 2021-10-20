@@ -12,8 +12,10 @@ class App extends React.Component{
       responseOk: true,
       movies: [],
       allMovies: [],
-      loading: true
+      loading: true,
+      searchedMovies: []
     }
+    this.search = this.search.bind(this)
   }
 
   componentDidMount() {
@@ -41,15 +43,34 @@ class App extends React.Component{
     })
   }
 
+  search(searchQuery) {
+    let filteredMovies = []
+    let wordCrud = ['the', 'a', 'i', 'and', 'in']
+    const splitQuery = searchQuery.toLowerCase().split(" ")
+    splitQuery.forEach(word => {
+      if(wordCrud.includes(word)){return}
+      this.state.movies.forEach(movie => {
+        if(movie.title.toLowerCase().includes(word)) {
+          filteredMovies.push(movie)
+        }
+      })
+    })
+    console.log(filteredMovies)
+    filteredMovies = [...new Set(filteredMovies)]
+    this.setState({searchedMovies: filteredMovies})
+  }
+
   render() {
     return(
       <div className="App">
         {this.state.responseOk ? <Route path="/" render={() => {
           return (
             <>
-              <Header />
+              <Header
+                search={this.search}
+              />
               <Main
-                movies={this.state.movies}
+                movies={this.state.searchedMovies.length ? this.state.searchedMovies : this.state.movies}
                 popupVisable={this.state.popupVisable}
                 allMovies={this.state.allMovies}
               />
