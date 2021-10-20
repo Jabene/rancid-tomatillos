@@ -16,11 +16,11 @@ function Main({movies, popupVisable, allMovies}) {
   return (
     <main
       className={window.location.href.length > 22 ? "movies-container-noscroll" : "movies-container"}>
-      <Route exact path="/:title" render={({match}) => {
-        let matchingMovie = allMovies.find(movie => match.params.title === movie.title) || {
+      <Route exact path="/:id" render={({match}) => {
+        let matchingMovie = allMovies.find(movie => Number(match.params.id) === movie.id) || {
           id: 0,
           poster_path: '',
-          genres: [''],
+          genres: [],
           rating: '',
           runtime: 0,
           revenue: 0,
@@ -29,7 +29,7 @@ function Main({movies, popupVisable, allMovies}) {
           release_date: "",
           title: ''
         }
-        return (movies.find(movie => match.params.title === movie.title) &&
+        return (movies.find(movie => Number(match.params.id) === movie.id) &&
         <Popup
           currentMovie={matchingMovie}
         />)

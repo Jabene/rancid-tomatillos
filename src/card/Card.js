@@ -27,7 +27,7 @@ class Card extends React.Component {
   render () {
     return (
     <NavLink style={{textDecoration: 'none', color: 'black'}}
-      to={`/${this.props.movie.title}`}
+      to={`/${this.props.movie.id}`}
       className='movie-card'
       onMouseEnter={() => {this.changeHoverState()}}
       onMouseLeave={() => {this.changeHoverState()}}
