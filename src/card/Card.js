@@ -28,7 +28,7 @@ class Card extends React.Component {
     return (
     <NavLink style={{textDecoration: 'none', color: 'black'}}
       to={`/${this.props.movie.id}`}
-      className='movie-card'
+      className='movie-card' id={this.props.movie.id}
       onMouseEnter={() => {this.changeHoverState()}}
       onMouseLeave={() => {this.changeHoverState()}}
       // onClick={() => {this.props.togglePopup(this.props.movie.id)}}
