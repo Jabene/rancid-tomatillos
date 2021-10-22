@@ -1,9 +1,9 @@
 import React from 'react'
 import Button from '../button/Button.js';
+import { Link } from 'react-router-dom'
 import './Popup.css'
 
-function Popup({closePopup, currentMovie}) {
-  // console.log('Hello',currentMovie.title)
+function Popup({currentMovie}) {
   let popupBackground = {backgroundImage: `url(${currentMovie.backdrop_path})`}
   return (
     <div className='popup'>
@@ -11,12 +11,12 @@ function Popup({closePopup, currentMovie}) {
       <div className='popup-container' style={ popupBackground } >
         <div className='popup-info'>
           <div className="popup-image">
-            <img className='popup-poster' src={currentMovie.poster_path} alt={`imagery of ${(currentMovie.genres[0]).toLowerCase()}`}/>
+            <img className='popup-poster' src={currentMovie.poster_path} alt={`imagery of ${currentMovie.genres[0].toLowerCase()}`}/>
           </div>
           <article className='popup-article'>
-            <div className='popup-close'>
-              <Button onClick={() => { closePopup(currentMovie.id)} } text="" className="popup-btn"/>
-            </div>
+            <Link to="/" className='popup-close'>
+              <Button text="" className="popup-btn"/>
+            </Link>
             <h1>{ currentMovie.title }</h1>
             <p> {`${currentMovie.release_date.substring(0,4)}, ${Math.floor(currentMovie.runtime/60)}h ${currentMovie.runtime % 60}m`} </p>
             <div className='popup-details'>

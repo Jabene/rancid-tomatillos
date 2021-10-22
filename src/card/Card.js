@@ -1,5 +1,6 @@
 import React from 'react';
-import './Card.css'
+import { NavLink } from 'react-router-dom';
+import './Card.css';
 
 class Card extends React.Component {
   constructor(props) {
@@ -25,11 +26,12 @@ class Card extends React.Component {
 
   render () {
     return (
-    <div
-      className='movie-card'
+    <NavLink style={{textDecoration: 'none', color: 'black'}}
+      to={`/${this.props.movie.id}`}
+      className='movie-card' id={this.props.movie.id}
       onMouseEnter={() => {this.changeHoverState()}}
       onMouseLeave={() => {this.changeHoverState()}}
-      onClick={() => {this.props.togglePopup(this.props.movie.id)}}
+      // onClick={() => {this.props.togglePopup(this.props.movie.id)}}
     >
       {this.state.hover &&
         <div className="hover-info">
@@ -39,7 +41,7 @@ class Card extends React.Component {
       }
       <img className='movie-img' src={this.props.movie.poster_path} alt={`${this.props.movie.title} movie cover`}/>
       <h2>{this.props.movie.title}</h2>
-    </div>
+    </NavLink>
     )
   }
 }

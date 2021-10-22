@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './header/Header.js';
 import Main from './main/Main.js';
+import { Route } from 'react-router-dom'
 import { fetchData } from './data/apiData'
 
 class App extends React.Component{
@@ -10,10 +11,11 @@ class App extends React.Component{
     this.state = {
       responseOk: true,
       movies: [],
-      popupVisable: false,
-      currentMovie: {}
+      allMovies: [],
+      loading: true,
+      searchedMovies: []
     }
-    this.togglePopup = this.togglePopup.bind(this)
+    this.search = this.search.bind(this)
   }
 
   componentDidMount() {
@@ -25,26 +27,56 @@ class App extends React.Component{
         this.setState({responseOk: false})
       }
     })
+    .then(() => {
+      this.state.movies.forEach(movie => {
+        this.fetchMovie(movie.id)
+      })
+    })
+    .then(() => {this.setState({loading: false})})
   }
 
-  togglePopup(id) {
-    fetchData(`movies/${id}`)
-    .then(data => {
-      this.setState({currentMovie: data.movie, popupVisable: !this.state.popupVisable})
-      // console.log(this.state.currentMovie)
+  fetchMovie(id) {
+    return fetchData(`movies/${id}`).then(data => {
+      let allMovies = this.state.allMovies
+      allMovies.push(data.movie)
+      this.setState({allMovies: allMovies})
     })
+  }
+
+  search(searchQuery) {
+    let filteredMovies = []
+    let wordCrud = ['the', 'a', 'i', 'and', 'in']
+    const splitQuery = searchQuery.toLowerCase().split(" ")
+    splitQuery.forEach(word => {
+      if(wordCrud.includes(word)){return}
+      this.state.movies.forEach(movie => {
+        if(movie.title.toLowerCase().includes(word)) {
+          filteredMovies.push(movie)
+        }
+      })
+    })
+    console.log(filteredMovies)
+    filteredMovies = [...new Set(filteredMovies)]
+    this.setState({searchedMovies: filteredMovies})
   }
 
   render() {
     return(
       <div className="App">
-        {this.state.responseOk ? <><Header />
-        <Main
-          movies={this.state.movies}
-          popupVisable={this.state.popupVisable}
-          togglePopup={this.togglePopup}
-          movieInfo={this.state.currentMovie}
-        /></> : <p>Try again, buster! No, seriously...we are sorry, having issues over here!</p>}
+        {this.state.responseOk ? <Route path="/" render={() => {
+          return (
+            <>
+              <Header
+                search={this.search}
+              />
+              <Main
+                movies={this.state.searchedMovies.length ? this.state.searchedMovies : this.state.movies}
+                popupVisable={this.state.popupVisable}
+                allMovies={this.state.allMovies}
+              />
+            </>
+          )
+        }} /> : <p>Try again, buster! No, seriously...we are sorry, having issues over here!</p>}
       </div>
     )
   }

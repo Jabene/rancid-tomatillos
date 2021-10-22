@@ -1,11 +1,30 @@
 header {
   height: 8%;
   width: 100%;
-  background-color: purple;
+  background-color: #202020;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
 h1 {
-  margin: 1% 0% 0% 0%;
+  margin: 0% 0% 0% 0%;
+  font-family: 'Rampart One', cursive;
+}
+
+header > div {
+  width: auto%;
+  height: 100%;
+  align-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0% 2% 0% 0%;
+}
+
+header > img {
+  height: 85%;
+  width: auto;
+  margin: 0% 0% 0% 2%;
 }
