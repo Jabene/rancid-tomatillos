@@ -76,7 +76,7 @@ class App extends React.Component{
               />
             </>
           )
-        }} /> : <p>Try again, buster! No, seriously...we are sorry, having issues over here!</p>}
+        }} /> : <p id="fetch-error">Try again, buster! No, seriously...we are sorry, having issues over here!</p>}
       </div>
     )
   }
