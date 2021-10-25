@@ -28,7 +28,7 @@ function Popup({currentMovie, moviePath, movieKeyData}) {
               <h3>Revenue:</h3>
               <p>{ `${(currentMovie.revenue/1000000).toFixed(1)} Mil` }</p>
               <h3>Trailer:</h3>
-              <a href={`https://www.youtube.com/watch?v=${movieKeyData.movieKey.key}`}>YouTube</a>
+              <a target="_blank" href={`https://www.youtube.com/watch?v=${movieKeyData.movieKey.key}`}>YouTube</a>
             </div>
           </article>
         </div>
