@@ -3,9 +3,7 @@ import Card from '../card/Card.js';
 import { Route } from 'react-router-dom'
 import '../main/Main.css'
 import Popup from '../popup/Popup.js';
-
-function Main({movies, allMovies}) {
-  console.log(movies, 'movies in main')
+function Main({movies, allMovies, videoKeys}) {
   const movieCards = movies.map(movie => {
     return(
       <Card
@@ -30,14 +28,15 @@ function Main({movies, allMovies}) {
           release_date: "",
           title: ''
         }
-        return (movies.find(movie => Number(match.params.id) === movie.id) &&
+        let movieKeyData = videoKeys.find(key => Number(match.params.id) === key.id) || {}
+        return (videoKeys.find(movie => Number(match.params.id) === movie.id) &&
         <Popup
           currentMovie={matchingMovie}
+          movieKeyData={movieKeyData}
         />)
       }}/>
       {movieCards}
     </main>
   )
 }
-
 export default Main;
