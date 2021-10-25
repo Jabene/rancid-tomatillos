@@ -86,3 +86,13 @@
 .popup-details > h3 {
   margin-bottom: 1%;
 }
+
+.youtube-button {
+  width: 100%;
+  height: 8%;
+}
+
+.video-btn {
+  height: 100%;
+  width: 20%;
+}

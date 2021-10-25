@@ -1,14 +1,11 @@
 import React from 'react'
 import Button from '../button/Button.js';
-import YoutubeEmbed from '../youtube/YoutubeEmbed'
-import { Link } from 'react-router-dom'
-import './Popup.css'
+import { Link } from 'react-router-dom';
+import './Popup.css';
+import img from '../assets/youtube.svg';
 function Popup({currentMovie, moviePath, movieKeyData}) {
   let popupBackground = {backgroundImage: `url(${currentMovie.backdrop_path})`}
-  console.log(movieKeyData)
-  // let videoKey = fetchVideo(currentMovie.id)
-  // let videoKey = fetchVideo(539885)
-  // console.log(currentMovie)
+
   return (
     <div className='popup'>
       <div className='popup-opacity'></div>
@@ -30,7 +27,8 @@ function Popup({currentMovie, moviePath, movieKeyData}) {
               <p>{ currentMovie.genres.join('/')}</p>
               <h3>Revenue:</h3>
               <p>{ `${(currentMovie.revenue/1000000).toFixed(1)} Mil` }</p>
-              <YoutubeEmbed movieKeyData={movieKeyData}/>
+              <h3>Trailer:</h3>
+              <a target="_blank" href={`https://www.youtube.com/watch?v=${movieKeyData.movieKey.key}`}>YouTube</a>
             </div>
           </article>
         </div>
