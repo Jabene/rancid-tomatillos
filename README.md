@@ -3,7 +3,7 @@
 ## Abstract
 Rancid Tomatillos is an app used to view the average ratings of a variety of films, and also looking more deeply at each film's details. Users can search through the films in the database by title or by a selected range of average rating. Based on these search parameters the user will see an assortment of movie poster thumbnails on the homepage. By clicking a thumbnail the user navigates to the individual film page to see more details and a carousel of related youtube videos.
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/68795578/135161796-3e1ef992-a0c4-4e49-bcd8-d114f9f6d382.gif)
+![Rancid Full-high](https://user-images.githubusercontent.com/68795578/138777234-eaeee701-7e77-4cc7-91f4-a0e0cfe1855b.gif)
 
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/68795578/135163144-e7c27392-9c8b-457d-912e-7d9b6a9437d1.gif)
 
