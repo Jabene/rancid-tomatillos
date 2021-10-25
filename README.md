@@ -18,22 +18,11 @@ Rancid Tomatillos is an app used to view the average ratings of a variety of fil
 
 ## Instructions to Access Application
 
-### Server Setup
-
- In a new Terminal window, run the following commands:
- 1. `git clone git@github.com:Jabene/rancid-tomatillos.git`
- 2. `cd` into the repository (directory)
- 3. Run the command `npm install`
- 4. Run the command `npm start`
-
-### Application Setup
-
 In a new Terminal window, run the following commands:
-1. `git clone git@github.com:najinl/overlook.git`
+1. `git clone git@github.com:Jabene/rancid-tomatillos.git`
 2. `cd`into the repository (directory)
 3. Run the command `npm install`
 4. Run the command `npm start`
-5. Copy and paste `http://localhost:8080/` into your web browser. Voilà, you're there!
 
 ## Technologies
 - Create React App
