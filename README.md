@@ -1,7 +1,7 @@
 # Rancid Tomatillos - A Movie Application
 
 ## Abstract
-Rancid Tomatillos is an app used to view the average ratings of a variety of films, and also looking more deeply at each film's details. Users can search through the films in the database by title or by a selected range of average rating. Based on these search parameters the user will see an assortment of movie poster thumbnails on the homepage. By clicking a thumbnail the user navigates to the individual film page to see more details and a carousel of related youtube videos.
+Rancid Tomatillos is an app used to view the average ratings of a variety of films, and also looking more deeply at each film's details. Users can search through the films in the database by title. Based on these search parameters the user will see an assortment of movie poster thumbnails on the homepage. By clicking a thumbnail the user navigates to the individual film details and can click on a link to view the trailer on YouTube.
 
 ![Rancid Full-high (2)](https://user-images.githubusercontent.com/68795578/138778478-03f3b8f8-6b23-4a69-b71e-e0027e58098f.gif)
 
@@ -36,8 +36,8 @@ In a new Terminal window, run the following commands:
 - 
 
 ## Contributors
-- Joshua Benefield ,Github Username:Jabene
-- Nadia Naji, Github Username: najiln
+- Joshua Benefield ,Github Username: [Jabene](https://github.com/Jabene)
+- Nadia Naji, Github Username: [najiln](https://github.com/najinl)
 
 ## Rubric
 [Rancid Tomatillos](https://frontend.turing.edu/projects/module-3/rancid-tomatillos-v3.html)
