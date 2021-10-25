@@ -31,7 +31,6 @@ class Card extends React.Component {
       className='movie-card' id={this.props.movie.id}
       onMouseEnter={() => {this.changeHoverState()}}
       onMouseLeave={() => {this.changeHoverState()}}
-      // onClick={() => {this.props.togglePopup(this.props.movie.id)}}
     >
       {this.state.hover &&
         <div className="hover-info">
