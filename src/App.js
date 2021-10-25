@@ -4,7 +4,6 @@ import Header from './header/Header.js';
 import Main from './main/Main.js';
 import { Route } from 'react-router-dom'
 import { fetchData } from './data/apiData'
-
 class App extends React.Component{
   constructor() {
     super();
@@ -12,12 +11,12 @@ class App extends React.Component{
       responseOk: true,
       movies: [],
       allMovies: [],
+      allMovieKeys: [],
       loading: true,
       searchedMovies: []
     }
     this.search = this.search.bind(this)
   }
-
   componentDidMount() {
     fetchData("movies")
     .then(data => {
@@ -31,10 +30,13 @@ class App extends React.Component{
       this.state.movies.forEach(movie => {
         this.fetchMovie(movie.id)
       })
+    }).then(() => {
+      this.state.movies.forEach(movie => {
+        this.fetchMovieVideo(movie.id)
+      })
     })
     .then(() => {this.setState({loading: false})})
   }
-
   fetchMovie(id) {
     return fetchData(`movies/${id}`).then(data => {
       let allMovies = this.state.allMovies
@@ -42,7 +44,13 @@ class App extends React.Component{
       this.setState({allMovies: allMovies})
     })
   }
-
+  fetchMovieVideo(id) {
+    return fetchData(`/movies/${id}/videos`).then(data => {
+      let allMovieKeys = this.state.allMovieKeys
+      allMovieKeys.push({id: id, movieKey: data.videos[0] })
+      this.setState({allMovieKeys: allMovieKeys})
+    })
+  }
   search(searchQuery) {
     let filteredMovies = []
     let wordCrud = ['the', 'a', 'i', 'and', 'in']
@@ -55,11 +63,9 @@ class App extends React.Component{
         }
       })
     })
-    console.log(filteredMovies)
     filteredMovies = [...new Set(filteredMovies)]
     this.setState({searchedMovies: filteredMovies})
   }
-
   render() {
     return(
       <div className="App">
@@ -71,8 +77,8 @@ class App extends React.Component{
               />
               <Main
                 movies={this.state.searchedMovies.length ? this.state.searchedMovies : this.state.movies}
-                popupVisable={this.state.popupVisable}
                 allMovies={this.state.allMovies}
+                videoKeys={this.state.allMovieKeys}
               />
             </>
           )
@@ -81,5 +87,4 @@ class App extends React.Component{
     )
   }
 }
-
 export default App;
