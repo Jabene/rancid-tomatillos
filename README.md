@@ -23,6 +23,7 @@ In a new Terminal window, run the following commands:
 2. `cd`into the repository (directory)
 3. Run the command `npm install`
 4. Run the command `npm start`
+5. Open a window in your web browser of choice, and visit localhost:3000 to view the app!
 
 ## Technologies
 - Create React App
