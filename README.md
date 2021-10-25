@@ -33,7 +33,7 @@ In a new Terminal window, run the following commands:
 - Router
 
 ## Future Additions
-- 
+- Allow users to favorite movies and created a favorited movies navigation tab.
 
 ## Contributors
 - Joshua Benefield ,Github Username: [Jabene](https://github.com/Jabene)
